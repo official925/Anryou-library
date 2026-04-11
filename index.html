@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鹿児島県立大島高等学校 安陵図書館</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="shortcut icon" href="img/logo2.png">
+
+</head>
+<body>
+
+  <!-- ヘッダー -->
+<header class="site-header">
+  <div class="header-inner">
+    
+    <h1 class="logo">
+      <a href="https://www.edu.pref.kagoshima.jp/sh/oshima/">
+        <img src="img/logo.png" alt="鹿児島県立大島高等学校">
+      </a>
+    </h1>
+
+
+    <input type="checkbox" id="menu-btn">
+
+    <label for="menu-btn" class="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <nav class="header-nav">
+      <a href="#about">図書館について</a>
+      <a href="#guide">利用案内</a>
+      <a href="#stats">蔵書情報</a>
+      <a href="#contact">連絡先</a>
+      <a href="shiryou.html" class="nav-button">資料一覧</a>
+    </nav>
+
+  </div>
+</header>
+
+  <a id="top"></a>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="slides" aria-hidden="true">
+      <img src="スライドショー/スラ1.jpg" class="slide" alt="">
+      <img src="スライドショー/スラ2.jpg" class="slide" alt="">
+      <img src="スライドショー/スラ3.jpg" class="slide" alt="">
+      <img src="スライドショー/スラ4.jpg" class="slide" alt="">
+      <img src="スライドショー/スラ5.jpg" class="slide" alt="">
+      <img src="スライドショー/スラ6.jpg" class="slide" alt="">
+      <img src="スライドショー/スラ7.jpg" class="slide" alt="">
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-subtitle">鹿児島県立大島高等学校</p>
+        <h2>安陵図書館</h2>
+        <p class="hero-text">静けさの中で、学びを深める場所。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="page">
+    <!-- 左側：サイドバー -->
+    <aside class="sidebar">
+      <section class="mini-card">
+        <h2>目次</h2>
+        <nav class="toc-links">
+          <a href="#guide">① 利用案内</a>
+          <a href="#stats">② 蔵書・座席・ジャンル</a>
+          <a href="#hours">③ 開館日・時間</a>
+          <a href="#events">④ 年間行事</a>
+          <a href="shiryou.html">⑤ 資料関連</a>
+          <a href="soon.html">⑥ coming soon</a>
+        </nav>
+      </section>
+
+      <section class="mini-card notice-mini">
+        <h2>お知らせ</h2>
+        <p>HPがリニューアルしました！</p>
+        <p>更新日（26/3/17）</p>
+        <p>メンテナンス日：平日24:00〜翌日7:00</p>
+      </section>
+
+      <section class="mini-card">
+        <h2>外部リンク</h2>
+        <a class="side-button" href="https://www.instagram.com/daikou_anryo_library/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="side-button" href="https://www.edu.pref.kagoshima.jp/sh/oshima/" target="_blank" rel="noopener noreferrer">School Official HP</a>
+      </section>
+    </aside>
+
+    <!-- 右側：メイン -->
+    <main class="content">
+
+
+      <!-- コラム -->
+      <section class="card accent-card">
+        <h3>『高校生サミット in 奄美2026』</h3>
+        <p>様子はこちら</p>
+        <p class="link-center">
+          <a href="https://www.youtube.com/watch?v=9Es61P4Qy_0&t=3s" target="_blank" rel="noopener noreferrer">こちらをクリック</a>
+        </p>
+      </section>
+
+      <!-- 図書館について -->
+      <section id="about" class="card">
+        <h2>図書館について</h2>
+        <p>
+          大島高校の図書館は「安陵図書館」という名称で親しまれています。この名称は、昭和25年に図書館が整備されて以来、長い歴史の中で大切に受け継がれてきたものです。
+        </p>
+        <p>
+          館内には一般的な学習資料に加えて、奄美に関する貴重な地域資料も所蔵しており、郷土学習や調査活動にも幅広く活用できます。
+        </p>
+        <p>
+          また、静かに落ち着いて学習できる環境が整っているため、自習スペースとして利用する生徒も多く、日々の予習・復習や受験勉強の場としても適しています。
+        </p>
+      </section>
+
+      <!-- 利用案内 -->
+      <section id="guide" class="card">
+        <h2>利用案内</h2>
+
+        <div class="feature-grid">
+          <div class="info-box">
+            <h3>貸出</h3>
+            <p>・冊数：5冊</p>
+            <p>・期間：2週間</p>
+          </div>
+
+          <div class="info-box">
+            <h3>検索</h3>
+            <a href="https://private.calil.jp/gk-2003914-g24wh/" target="_blank" rel="noopener noreferrer">
+              <img src="img/検索バー.png" alt="蔵書検索">
+            </a>
+          </div>
+
+          <div class="info-box">
+            <h3>ルール</h3>
+            <ul class="list">
+              <li>館内は静かに利用してください。</li>
+              <li>飲食は原則禁止です。（蓋つき飲料は可）</li>
+              <li>本は丁寧に扱ってください。</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>場所</h3>
+            <p>正門近くの和親館2F、入口正面奥の階段をのぼり左手</p>
+
+            <div class="map-wrap">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1755.2326802909815!2d129.50000006617014!3d28.37500920495072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x351fba624b6e96cb%3A0x168348840e13607b!2z6bm_5YWQ5bO255yM56uL5aSn5bO26auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1773461727022!5m2!1sja!2sjp"
+                loading="lazy"
+                allowfullscreen=""
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <h3>駐車場</h3>
+            <p>正門から入りすぐ右手にある来客用駐車場</p>
+            <p>※一般の方でも閲覧可能です。貸出は不可。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 蔵書・座席・ジャンル -->
+      <section id="stats" class="card">
+        <h2>蔵書・座席・ジャンル</h2>
+
+        <h3>蔵書概要</h3>
+        <table class="data-table">
+          <tbody>
+            <tr>
+              <th>蔵書総数（冊）</th>
+              <td>25,378 冊</td>
+            </tr>
+            <tr>
+              <th>雑誌タイトル数</th>
+              <td>10 タイトル</td>
+            </tr>
+            <tr>
+              <th>電子資料</th>
+              <td>なし</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="hours">開館日・時間</h3>
+        <table class="data-table">
+          <tbody>
+            <tr><th>月曜日</th><td>7:30〜19:00</td></tr>
+            <tr><th>火曜日</th><td>7:30〜19:00</td></tr>
+            <tr><th>水曜日</th><td>7:30〜19:00</td></tr>
+            <tr><th>木曜日</th><td>7:30〜19:00</td></tr>
+            <tr><th>金曜日</th><td>7:30〜19:00</td></tr>
+            <tr><th>土曜日</th><td>9:00〜15:00（不定）</td></tr>
+            <tr><th>日曜日</th><td>9:00〜15:00（不定）</td></tr>
+          </tbody>
+        </table>
+
+        <p class="small-text">※行事によって変更になる場合があります。ご了承ください。</p>
+
+        <h3>座席情報</h3>
+        <table class="data-table">
+          <tbody>
+            <tr>
+              <th>窓側席</th>
+              <td>27 席</td>
+            </tr>
+            <tr>
+              <th>対面の机（仕切り有）</th>
+              <td>54 席</td>
+            </tr>
+            <tr>
+              <th>グループテーブル</th>
+              <td>8 席</td>
+            </tr>
+            <tr>
+              <th>合計</th>
+              <td>89 席</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>主な所蔵ジャンル</h3>
+        <table class="data-table">
+          <tbody>
+            <tr><th>教科書・参考書</th><td>国語・数学・英語・理科・地歴公民の学習参考書、問題集</td></tr>
+            <tr><th>小説・文学</th><td>日本文学、海外文学、エッセイ、詩集、古典、ライトノベル</td></tr>
+            <tr><th>科学・技術</th><td>数学、物理、医学、建築、IT・プログラミング、環境問題</td></tr>
+            <tr><th>社会・時事・歴史</th><td>政治・経済・歴史・地理、時事問題やニュース解説本</td></tr>
+            <tr><th>資格・検定・進学関連</th><td>英検・漢検・TOEIC・公務員試験・大学過去問（赤本）</td></tr>
+            <tr><th>趣味・生活・実用書</th><td>料理レシピ、手芸、健康、旅行ガイド、スポーツ、園芸</td></tr>
+            <tr><th>雑誌・新聞・年鑑</th><td>学習雑誌、科学雑誌、趣味系雑誌</td></tr>
+            <tr><th>図鑑・事典</th><td>生物、動物、植物、宇宙、などの図鑑・百科事典</td></tr>
+            <tr><th>芸術・文化</th><td>音楽・楽譜、美術、書道、演劇、映画、写真集</td></tr>
+            <tr><th>郷土資料</th><td>奄美の歴史、島唄、大島紬、奄美方言、田中一村、自校資料</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 年間行事 -->
+      <section id="events" class="card">
+        <h2>年間行事</h2>
+        <table class="data-table">
+          <tbody>
+            <tr><th>1月</th><td>館報発行</td></tr>
+            <tr><th>2月</th><td>定期テスト勉強会</td></tr>
+            <tr><th>3月</th><td>春の特別貸し出し</td></tr>
+            <tr><th>4月</th><td>子ども読書とミニイベント</td></tr>
+            <tr><th>5月</th><td>読書週間</td></tr>
+            <tr><th>6月</th><td>文化祭</td></tr>
+            <tr><th>7月</th><td>ビブリオバトル</td></tr>
+            <tr><th>8月</th><td>夏季特別貸出</td></tr>
+            <tr><th>9月</th><td>体育祭</td></tr>
+            <tr><th>10月</th><td>読書週間</td></tr>
+            <tr><th>11月</th><td>先生方のおすすめ冊子作製</td></tr>
+            <tr><th>12月</th><td>読書週間</td></tr>
+          </tbody>
+        </table>
+      </section>
+      
+
+      <!-- おたより -->
+      <section class="card">
+        <h2>今月のおたより</h2>
+        <p class="small-text">※スマホ版で表示しています</p>
+        <p class="small-text">過去のお便りは<a href="oshirase.html">こちら</a>から</p>
+        <div class="sheet-wrap">
+          <iframe
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSXLWxPJqkDO7irRCk36bS_F-jA9c8I1LHhwUVcX7KZcYFbP5SuY6KMKb9MyS--avTkp7NwmF2tRL9w/pubhtml"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>告知</h2>
+        <p class="small-text">※スマホ版で表示しています</p>
+        <div class="sheet-wrap">
+          <iframe
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRaTfkfbYqoMDmGVdREw5QUtYYAHZqoX_GP22mRh1swxzlI0ptmYDk2lr_VDZVZET5yuw2ezvJJsMid/pubhtml"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+      <!-- よくある質問 -->
+      <section class="card">
+        <h2>よくある質問</h2>
+
+        <p class="section-label">1. 利用・貸出について</p>
+
+        <details>
+          <summary>Q1. 何冊まで借りられますか？</summary>
+          <p>A1. 最大5冊まで。貸出期間は2週間です。延長は1回まで（予約がない場合）。</p>
+        </details>
+
+        <details>
+          <summary>Q2. 貸出カードを忘れた場合</summary>
+          <p>A2. 図書担当に相談してください。書き出しカードに記入できれば貸出できます。</p>
+        </details>
+
+        <details>
+          <summary>Q3. 参考資料や郷土資料も借りられますか？</summary>
+          <p>A3. 資料によって異なるため図書担当に相談してください。一般の方は貸出不可です。</p>
+        </details>
+
+        <p class="section-label">2. 利用マナーについて</p>
+
+        <details>
+          <summary>Q4. 図書室での飲食は良いですか？</summary>
+          <p>A4. 飲食は原則禁止です。（蓋つき飲料は可）</p>
+        </details>
+
+        <details>
+          <summary>Q5. 本を破ったり書き込んだらどうなる？</summary>
+          <p>A5. その本と同等のものを弁償することになります。本は丁寧に扱いましょう。</p>
+        </details>
+      </section>
+
+      <!-- 連絡先 -->
+      <section id="contact" class="card">
+        <h2>連絡・外部リンク</h2>
+
+        <p>鹿児島県立大島高等学校</p>
+        <p>〒894-8588</p>
+        <p>鹿児島県奄美市名瀬安勝町7-1</p>
+        <p>電話：0997-52-4451</p>
+
+        <div class="link-cards">
+          <div class="link-card">
+            <h3>図書館公式インスタグラム</h3>
+            <a href="https://www.instagram.com/daikou_anryo_library/" target="_blank" rel="noopener noreferrer">
+              <img src="img/3.png" alt="Instagramアイコン">
+            </a>
+          </div>
+
+          <div class="link-card">
+            <h3>学校ホームページ</h3>
+            <a href="https://www.edu.pref.kagoshima.jp/sh/oshima/" target="_blank" rel="noopener noreferrer">
+              <img src="img/2.jpg" alt="学校画像">
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ホームページからのお知らせ -->
+      <section class="card notice-card">
+        <h2>ホームページからのお知らせ</h2>
+        <p>HPがリニューアルしました！</p>
+        <p>更新日（26/3/17）</p>
+        <p>メンテナンス日：平日24:00〜翌日7:00</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <p>Anryo Library | Kagoshima Prefectural Oshima High School Library</p>
+    <p>© 2026 Anryo Library</p>
+    <p>Ver.4.18.19</p>
+    <img src="img/sin.l.png" alt="">
+  </footer>
+
+  <a href="#top" class="back-to-top" aria-label="トップに戻る">▲</a>
+
+  <div class="OK">
+    <img src="img/OK.png" alt="">
+  </div>
+
+</body>
+</html>
