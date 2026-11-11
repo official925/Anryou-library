@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+   安陵図書館  トップページ（index.html）
+  ============================================================
+   ■ 文字を変えたいとき
+     「✏」マークのコメントがある場所が、書き換えるところです。
+     タグ（< > で囲まれた部分）はそのままにして、間の文字だけ変えてください。
+
+   ■ ページの並び（上から順番）
+      0. ヘッダー（ロゴ・メニュー・文字サイズ）
+      1. トップ（タイトル・流れる写真）
+      2. コラム（YouTube）
+      3. 図書館について
+      4. 目次
+      5. 利用案内
+      6. 蔵書・座席・ジャンル
+      7. 開館日・時間
+      8. 年間行事
+      9. おたより・告知
+     10. よくある質問
+     11. 連絡・外部リンク
+     12. ホームページからのお知らせ
+     13. フッター
+
+   ■ 関係するファイル
+     base.css   … 全ページ共通の見た目（色・ヘッダー・フッターなど）
+     style.css  … このページだけの見た目
+     site.js    … 文字サイズ切替・スマホメニュー・写真の停止ボタンなど
+     README.txt … 編集のしかたのまとめ
+  ============================================================
+-->
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+
+  <!-- ✏ ブラウザのタブに出るタイトル / 検索結果に出る説明文 -->
+  <title>鹿児島県立大島高等学校 安陵図書館｜奄美市の高校図書室 利用案内・蔵書情報</title>
+  <meta name="description" content="鹿児島県立大島高等学校の図書館「安陵図書館」。利用案内、蔵書情報、開館時間、年間行事、よくある質問など。">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2b2622">
+
+  <!-- フォント（Google Fonts） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- 見た目（CSS） -->
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a id="top"></a>
+
+  <!-- キーボード操作の人向け：Tabキーで最初に出る「本文へスキップ」 -->
+  <a class="skip" href="#main">本文へスキップ</a>
+
+
+  <!-- ==========================================================
+       0. ヘッダー（ロゴ・メニュー・文字サイズ）
+       ========================================================== -->
+  <header class="site-header">
+
+    <!-- ロゴ（押すと学校の公式サイトへ） -->
+    <h1 class="logo-h1">
+      <a href="https://www.edu.pref.kagoshima.jp/sh/oshima/" class="brand" aria-label="鹿児島県立大島高等学校 公式サイト">
+        <img src="img/logo.png" alt="" class="brand-logo">
+        <!-- ✏ ロゴ横の文字 -->
+        <span class="brand-name">安陵図書館<small>鹿児島県立大島高等学校</small></span>
+      </a>
+    </h1>
+
+    <!-- メニュー
+         ✏ 文字を変えるときは、data-t="" の中と、その後ろの文字の「両方」を同じにしてください
+            （data-t はホバーしたときに下から出てくる文字です） -->
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <a class="roll" href="#guide"><span data-t="利用案内">利用案内</span></a>
+      <a class="roll" href="#stats"><span data-t="蔵書">蔵書</span></a>
+      <a class="roll" href="#hours"><span data-t="開館時間">開館時間</span></a>
+      <a class="roll" href="#events"><span data-t="年間行事">年間行事</span></a>
+      <a class="roll" href="#faq"><span data-t="よくある質問">よくある質問</span></a>
+      <a class="roll" href="#contact"><span data-t="連絡先">連絡先</span></a>
+      <ul class="mokuroku">
+        <li><a class="btn" href="shiryou.html"><span>資料一覧はこちら</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- 文字サイズ切替 と スマホ用メニューボタン（動きは site.js） -->
+    <div class="tools">
+      <div class="fs" role="group" aria-label="文字サイズ">
+        <span class="fs-label" aria-hidden="true">文字</span>
+        <button type="button" class="fs-btn" data-fs="m" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="l" aria-pressed="false">大</button>
+      </div>
+      <button type="button" class="menu-btn" aria-controls="gnav" aria-expanded="false">
+        <span class="bars" aria-hidden="true"><i></i><i></i></span>
+        <span class="menu-txt">メニュー</span>
+      </button>
+    </div>
+
+  </header>
+
+
+  <!-- ==========================================================
+       1. トップ（タイトル・流れる写真）
+       ========================================================== -->
+  <section class="hero" aria-labelledby="hero-title" role="region">
+
+    <div class="hero-head">
+      <!-- ✏ 学校名 と 大きなタイトル -->
+      <h2 id="hero-title">
+        <span class="school">鹿児島県立大島高等学校</span>
+        <span class="name">「安陵」</span>
+      </h2>
+      <!-- ✏ キャッチコピー -->
+      <div class="hero-copy-wrap">
+        <p class="hero-copy">静けさから生まれる学び</p>
+        <p class="lead">生徒の学びと読書を支える場所</p>
+      </div>
+    </div>
+
+    <!-- 流れる写真
+         ・写真を替えるとき：slides/ に英数字の名前で画像を入れて、src="" を書き換える
+         ・写真を増やすとき：<li>…</li> の行をコピーして増やす（何枚でもOK）
+         ・写真はすべて同じ大きさ（横3：縦2）に自動で切りそろえて表示されます -->
+    <div class="strip" aria-hidden="true">
+      <ul class="strip-track">
+        <li><img src="slides/slide1.jpg" width="4080" height="2295" alt="" loading="eager" decoding="async"></li>
+        <li><img src="slides/slide2.jpg" width="1477" height="1108" alt="" loading="eager" decoding="async"></li>
+        <li><img src="slides/slide3.jpg" width="3993" height="2246" alt="" loading="eager" decoding="async"></li>
+        <li><img src="slides/slide4.jpg" width="1477" height="1108" alt="" loading="eager" decoding="async"></li>
+        <li><img src="slides/slide5.jpg" width="2094" height="1178" alt="" loading="eager" decoding="async"></li>
+        <li><img src="slides/slide6.jpg" width="3301" height="1857" alt="" loading="eager" decoding="async"></li>
+        <li><img src="slides/slide7.jpg" width="3727" height="2096" alt="" loading="eager" decoding="async"></li>
+      </ul>
+    </div>
+
+    <div class="hero-foot">
+      <!-- 写真の動きを止める／動かすボタン（文字は site.js が切り替えます） -->
+      <button type="button" class="strip-toggle" aria-pressed="false">
+        <span class="ic" aria-hidden="true"></span><span class="lbl">写真の動きを止める</span>
+      </button>
+      <!-- ✏ 写真の説明 -->
+      <p class="hero-note">館内と奄美の風景</p>
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================================
+       本文ここから
+       ========================================================== -->
+  <main role="main" id="main" tabindex="-1">
+
+    <!-- ✏ 開いたときに数秒だけ出るお知らせ -->
+    <div class="popup"><p>画面を大きくするには Ctrl ＋ を押してください<br>(PCのみ)</p></div>
+
+
+    <!-- ========================================================
+         2. コラム（YouTube）
+         ✏ リンク先は href=""、文字は 題名 の中を書き換え
+         ======================================================== -->
+    <div class="koramu">
+      <a href="https://www.youtube-nocookie.com/embed/sYPRl4yZQQ4" class="koramu-link">
+        <span class="題名">『高校生サミット in 奄美2026』<br>様子はこちら</span>
+        <span class="youtube">こちらをクリック<i class="arw" aria-hidden="true"></i></span>
+      </a>
+    </div>
+
+
+    <!-- ========================================================
+         3. 図書館について
+         ======================================================== -->
+    <section id="about" class="sec" aria-labelledby="about-title">
+      <div class="sec-head">
+        <h2 id="about-title">図書館について</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body about-body">
+        <!-- ✏ 本文（段落を増やすときは <p>～</p> をコピー） -->
+        <p>
+          大島高校の図書館は「安陵図書館」という名称で親しまれています。この名称は、昭和25年に図書館が整備されて以来、長い歴史の中で大切に受け継がれてきたものです。館内には一般的な学習資料に加えて、奄美に関する貴重な地域資料も所蔵しており、郷土学習や調査活動にも幅広く活用できます。
+        </p>
+        <p>
+          また、静かに落ち着いて学習できる環境が整っているため、自習スペースとして利用する生徒も多く、日々の予習・復習や受験勉強の場としても適しています。生徒の皆さんが気軽に立ち寄り、学びや発見の場として親しんでいただければ幸いです。
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         4. 目次
+         ✏ 1行が1項目。href="#〇〇" は飛び先（各セクションの id）
+         ======================================================== -->
+    <section class="sec mokuzi" aria-labelledby="mokuzi-title">
+      <div class="sec-head">
+        <h2 class="mokuzimozi" id="mokuzi-title">目次</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+        <ol class="mokuzi-list">
+          <li><nav><a href="#guide">
+            <span class="n">①</span><span class="t">利用案内</span><i class="arw" aria-hidden="true"></i>
+          </a></nav></li>
+          <li><nav><a href="#stats">
+            <span class="n">②</span><span class="t">蔵書・座席・ジャンル</span><i class="arw" aria-hidden="true"></i>
+          </a></nav></li>
+          <li><nav><a href="#hours">
+            <span class="n">③</span><span class="t">開館日・時間</span><i class="arw" aria-hidden="true"></i>
+          </a></nav></li>
+          <li><nav><a href="#events">
+            <span class="n">④</span><span class="t">年間行事</span><i class="arw" aria-hidden="true"></i>
+          </a></nav></li>
+          <li><nav><a href="shiryou.html">
+            <span class="n">⑤</span><span class="t">資料関連</span><i class="arw" aria-hidden="true"></i>
+          </a></nav></li>
+          <li><nav><a href="soon.html">
+            <span class="n">⑥</span><span class="t">～coming soon～</span><i class="arw" aria-hidden="true"></i>
+          </a></nav></li>
+        </ol>
+        <p class="note">※飛ばない場合は数字を押してください</p>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         5. 利用案内
+         ✏ <dt> が左の見出し、<dd> の中が右の内容
+         ======================================================== -->
+    <section id="guide" class="sec" aria-labelledby="guide-title">
+      <div class="sec-head">
+        <h2 id="guide-title">利用案内</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+        <dl class="rows">
+
+          <!-- 貸出（✏ <strong> の中が大きく出る数字） -->
+          <div class="row">
+            <dt>貸出</dt>
+            <dd>
+              <p class="lend">
+                <span>冊数</span><strong>5</strong>冊
+                <span class="gap"></span>
+                <span>期間</span><strong>2</strong>週間
+              </p>
+            </dd>
+          </div>
+
+          <!-- 検索（画像を押すとカーリルの蔵書検索へ） -->
+          <div class="row">
+            <dt>検索</dt>
+            <dd>
+              <a class="search-bar" href="https://private.calil.jp/gk-2003914-g24wh/" target="_blank" rel="noopener noreferrer" aria-label="蔵書検索（カーリル）新しいタブで開きます">
+                <img src="img/search-bar.png" alt="蔵書検索">
+              </a>
+              <p class="muted">Instagramも更新中：<br>アイコンからアクセスしてください。</p>
+            </dd>
+          </div>
+
+          <!-- ルール（✏ 1行が1項目） -->
+          <div class="row">
+            <dt>ルール</dt>
+            <dd>
+              <ul class="rules">
+                <li>館内は静かに利用してください。</li>
+                <li>飲食は原則禁止（蓋つき飲料は可）。</li>
+                <li>本は丁寧に扱う。（折り曲げ・書き込み禁止、元の場所に戻す）</li>
+              </ul>
+            </dd>
+          </div>
+
+          <!-- 場所（地図は Googleマップの「地図を埋め込む」で取れる src を貼る） -->
+          <div class="row">
+            <dt>場所</dt>
+            <dd>
+              <p>正門近くの和親館2F　入口正面奥の階段をのぼり左手</p>
+              <div class="map-wrap">
+                <iframe
+                  title="大島高校の地図"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1755.2326802909815!2d129.50000006617014!3d28.37500920495072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x351fba624b6e96cb%3A0x168348840e13607b!2z6bm_5YWQ5bO255yM56uL5aSn5bO26auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1773461727022!5m2!1sja!2sjp"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </dd>
+          </div>
+
+          <!-- 駐車場 -->
+          <div class="row">
+            <dt>駐車場</dt>
+            <dd>
+              <p>正門から入りすぐ右手にある来客用駐車場</p>
+              <p class="muted">※一般の方でも閲覧可能です。貸出は不可。</p>
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         6. 蔵書・座席・ジャンル
+         ✏ 表は1行が <tr>。<th> が左（項目名）、<td> が右（内容）
+         ======================================================== -->
+    <section id="stats" class="sec" aria-labelledby="stats-title">
+      <div class="sec-head">
+        <h2 id="stats-title">蔵書・座席・ジャンル</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+        <div class="two">
+
+          <!-- 蔵書概要 -->
+          <div>
+            <h3>蔵書概要</h3>
+            <table class="info-table">
+              <tbody>
+                <tr><th>蔵書総数（冊）</th>   <td>25,378 冊</td></tr>
+                <tr><th>雑誌タイトル数</th>   <td>10 タイトル</td></tr>
+                <tr><th>電子資料</th>         <td>なし</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 座席情報（class="sum" の行は太字の合計行） -->
+          <div>
+            <h3>座席情報</h3>
+            <table class="info-table">
+              <tbody>
+                <tr><th>窓側席</th>               <td>27 席</td></tr>
+                <tr><th>対面の机（仕切り有）</th> <td>54 席</td></tr>
+                <tr><th>グループテーブル</th>     <td>8 席</td></tr>
+                <tr class="sum"><th>合計</th>     <td>89 席</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- 主な所蔵ジャンル -->
+        <h3 class="mt">主な所蔵ジャンル</h3>
+        <table class="info-table genre">
+          <tbody>
+            <tr><th>教科書・参考書</th>       <td>国語・数学・英語・理科・地歴公民の学習参考書、問題集</td></tr>
+            <tr><th>小説・文学</th>           <td>日本文学、海外文学、エッセイ、詩集、古典、ライトノベル</td></tr>
+            <tr><th>科学・技術</th>           <td>数学、物理、医学、建築、IT・プログラミング、環境問題</td></tr>
+            <tr><th>社会・時事・歴史</th>     <td>政治・経済・歴史・地理、時事問題やニュース解説本</td></tr>
+            <tr><th>資格・検定・進学関連</th> <td>英検・漢検・TOEIC・公務員試験・大学過去問（赤本）</td></tr>
+            <tr><th>趣味・生活・実用書</th>   <td>料理レシピ、手芸、健康、旅行ガイド、スポーツ、園芸</td></tr>
+            <tr><th>雑誌・新聞・年鑑</th>     <td>学習雑誌、科学雑誌、趣味系雑誌</td></tr>
+            <tr><th>図鑑・事典</th>           <td>生物、動物、植物、宇宙、などの図鑑・百科事典</td></tr>
+            <tr><th>芸術・文化</th>           <td>音楽・楽譜、美術、書道、演劇、映画、写真集</td></tr>
+            <tr><th>郷土資料</th>             <td>奄美の歴史、島唄、大島紬、奄美方言、田中一村、自校資料</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         7. 開館日・時間
+         ✏ 時間は <td> の中を書き換え
+            data-day の数字（日=0 月=1 … 土=6）は「本日」の印に使うので変えないでください
+         ======================================================== -->
+    <section id="hours" class="sec" aria-labelledby="hours-title">
+      <div class="sec-head">
+        <h2 id="hours-title">開館日・時間</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+        <table class="info-table hours-table">
+          <tbody>
+            <tr data-day="1"><th>月曜日</th><td>7:30〜19:00</td></tr>
+            <tr data-day="2"><th>火曜日</th><td>7:30〜19:00</td></tr>
+            <tr data-day="3"><th>水曜日</th><td>7:30〜19:00</td></tr>
+            <tr data-day="4"><th>木曜日</th><td>7:30〜19:00</td></tr>
+            <tr data-day="5"><th>金曜日</th><td>7:30〜19:00</td></tr>
+            <tr data-day="6"><th>土曜日</th><td>9:00〜15:00（不定）</td></tr>
+            <tr data-day="0"><th>日曜日</th><td>9:00〜15:00（不定）</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">※行事によって変更になる場合があります。ご了承ください。</p>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         8. 年間行事
+         ✏ <b> の中が月、その後ろが行事名
+            data-m の数字（1〜12）は「今月」の印に使うので変えないでください
+         ======================================================== -->
+    <section id="events" class="sec" aria-labelledby="events-title">
+      <div class="sec-head">
+        <h2 id="events-title">年間行事</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+        <ul class="calendar">
+          <li data-m="1"> <b>1月</b> 館報発行</li>
+          <li data-m="2"> <b>2月</b> 定期テスト勉強会</li>
+          <li data-m="3"> <b>3月</b> 春の特別貸し出し</li>
+          <li data-m="4"> <b>4月</b> 子ども読書とミニイベント</li>
+          <li data-m="5"> <b>5月</b> 読書週間</li>
+          <li data-m="6"> <b>6月</b> 文化祭</li>
+          <li data-m="7"> <b>7月</b> ビブリオバトル</li>
+          <li data-m="8"> <b>8月</b> 夏季特別貸出</li>
+          <li data-m="9"> <b>9月</b> 体育祭</li>
+          <li data-m="10"><b>10月</b>読書週間</li>
+          <li data-m="11"><b>11月</b>先生方のおすすめ冊子作製</li>
+          <li data-m="12"><b>12月</b>読書週間</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         9. おたより・告知（Googleスプレッドシートの埋め込み）
+         ✏ 中身はスプレッドシート側で更新すれば自動で変わります
+         ======================================================== -->
+    <section class="sec" aria-labelledby="letters-title">
+      <div class="sec-head">
+        <h2 id="letters-title">おたより・告知</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body two">
+
+        <!-- 今月のおたより -->
+        <div class="おたより">
+          <h3>≪今月のおたより≫</h3>
+          <p class="muted">※スマホ版で表示しています<br>動かない場合はバーの左右をタップ</p>
+          <div class="sheet-wrap">
+            <iframe
+              title="今月のおたより"
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSXLWxPJqkDO7irRCk36bS_F-jA9c8I1LHhwUVcX7KZcYFbP5SuY6KMKb9MyS--avTkp7NwmF2tRL9w/pubhtml"
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- 告知 -->
+        <div class="おたより">
+          <h3>≪告知≫</h3>
+          <p class="muted">※スマホ版で表示しています<br>&nbsp;</p>
+          <div class="sheet-wrap">
+            <iframe
+              title="告知"
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRaTfkfbYqoMDmGVdREw5QUtYYAHZqoX_GP22mRh1swxzlI0ptmYDk2lr_VDZVZET5yuw2ezvJJsMid/pubhtml"
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         10. よくある質問
+         ✏ 質問を増やすときは <details>～</details> をまるごとコピー
+            <summary> が質問、<p> が答え
+         ======================================================== -->
+    <section id="faq" class="sec" aria-labelledby="faq-title">
+      <div class="sec-head">
+        <h2 id="faq-title">よくある質問</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+
+        <p class="faq-cat">1. 利用・貸出について</p>
+
+        <details>
+          <summary>Q1. 何冊まで借りられますか？</summary>
+          <p>A1. 最大5冊まで。貸出期間は2週間です。延長は1回まで（予約がない場合）。</p>
+        </details>
+
+        <details>
+          <summary>Q2. 貸出カードを忘れた場合</summary>
+          <p>A2. 図書担当に相談してください。書き出しカードに記入できれば貸出できます。</p>
+        </details>
+
+        <details>
+          <summary>Q3. 参考資料や郷土資料も借りられますか？</summary>
+          <p>A3. 資料によって異なるため図書担当に相談してください。一般の方は貸出不可。</p>
+        </details>
+
+        <p class="faq-cat">2. 利用マナーについて</p>
+
+        <details>
+          <summary>Q4. 図書室での飲食は良いですか？</summary>
+          <p>A4. 飲食は原則禁止（蓋つき飲料は可）。</p>
+        </details>
+
+        <details>
+          <summary>Q5. 本を破ったり書き込んだらどうなる？</summary>
+          <p>A5. その本と同等のものを弁償することになります。本は丁寧に扱いましょう。</p>
+        </details>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         11. 連絡・外部リンク
+         ======================================================== -->
+    <section id="contact" class="sec" aria-labelledby="contact-title">
+      <div class="sec-head">
+        <h2 id="contact-title">連絡・外部リンク</h2>
+        <span class="thread" aria-hidden="true"></span>
+      </div>
+
+      <div class="sec-body">
+
+        <!-- ✏ 住所・電話（電話番号は href="tel:" の後ろも同じ番号に、ハイフンなしで） -->
+        <div class="address">
+          <p class="muted">所在地・学校連絡</p>
+          <p class="school-name">鹿児島県立大島高等学校</p>
+          <p>〒894-8588　鹿児島県奄美市名瀬安勝町7-1</p>
+          <p>電話：<a class="ul" href="tel:0997524451">0997-52-4451</a></p>
+          <p class="muted">学校のお知らせ（最新情報）は、公式サイトでご確認ください。</p>
+        </div>
+
+        <!-- 外部リンク（1つの <a>～</a> が1行） -->
+        <div class="links">
+
+          <div class="SNS" aria-label="図書館公式SNS">
+            <a class="link-row" href="https://www.instagram.com/daikou_anryo_library/" aria-label="図書館公式インスタグラム">
+              <span class="thumb"><img src="img/3.png" alt="Instagramアイコン" class="icon"></span>
+              <span class="lbl">【図書館公式インスタグラム】</span>
+              <i class="arw" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="school" aria-label="学校ホームページ">
+            <a class="link-row" href="https://www.edu.pref.kagoshima.jp/sh/oshima/" aria-label="学校公式サイト">
+              <span class="thumb"><img src="img/2.jpg" alt="学校画像" class="photo"></span>
+              <span class="lbl">【大島高校安陵図書ホームページ】</span>
+              <i class="arw" aria-hidden="true"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         12. ホームページからのお知らせ
+         ✏ 更新日などはここ
+         ======================================================== -->
+    <div class="お知らせ" aria-labelledby="notice-title">
+      <h3 id="notice-title">【ホームページからのお知らせ】</h3>
+      <p>26/11/11：HPがリニューアルしました！</p>
+      <p></p>
+      <p>-----------------------------------------------</p>
+      <p>更新日(26/11/11)</p>
+      <p>-----------------------------------------------</p>
+      <p>メンテナンス日:平日24:00~翌日7:00</p>
+    </div>
+
+  </main>
+  <!-- 本文ここまで -->
+
+
+  <!-- ==========================================================
+       13. フッター
+       ✏ バージョン（Ver.）や年はここ
+       ========================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="kasuri-band" aria-hidden="true"></div>
+    <p class="f-title">Anryo Library | Kagoshima Prefectural Oshima High School Library</p>
+    <p class="f-links">
+      <a class="ul" href="https://www.instagram.com/daikou_anryo_library/">Instagram</a> |
+      <a class="ul" href="https://www.edu.pref.kagoshima.jp/sh/oshima/">School Official HP</a> |
+      <a class="ul" href="#contact">Contact</a>
+    </p>
+    <p class="copyright">© 2026 Anryo Library</p>
+    <p>Ver.4.18.20</p>
+
+    <a href="javascript:void(0)" aria-hidden="true">Created by ReN</a>
+  </footer>
+
+
+  <!-- 右下：トップに戻るボタン と クマ -->
+  <a href="#top" class="back-to-top" aria-label="トップに戻る">▲</a>
+  <div class="OK">
+    <img src="img/OK.png" alt="">
+  </div>
+
+  <script src="site.js"></script>
+</body>
+
+</html>
