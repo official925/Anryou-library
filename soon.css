@@ -1,0 +1,11 @@
+/* ============================================================
+   安陵図書館  coming soon ページ専用（soon.css）
+   共通部分は base.css
+   ============================================================ */
+
+.page-main { min-height: 45vh; }
+
+/* 準備中のメッセージ */
+.panel { max-width: 720px; padding: 8px 0; }
+.panel p { font-size: 1rem; margin-bottom: 6px; }
+.panel .back { margin-top: 30px; }   /* 「資料一覧へ戻る」ボタンの上のすき間 */

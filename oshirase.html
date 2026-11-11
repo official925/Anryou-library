@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+   安陵図書館  図書だよりアーカイブ（oshirase.html）
+  ============================================================
+   ■ 文字を変えたいとき
+     「✏」マークのコメントがある場所が、書き換えるところです。
+     一覧の中身は Googleスプレッドシート側で変えてください。
+
+   ■ 関係するファイル
+     base.css … 全ページ共通の見た目
+     oshirase.css … このページだけの見た目
+     site.js  … 文字サイズ切替など
+  ============================================================
+-->
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- ✏ ブラウザのタブに出るタイトル -->
+  <title>図書だよりアーカイブ｜安陵図書館</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2b2622">
+
+  <!-- フォント（Google Fonts） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- 見た目（CSS） -->
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="oshirase.css">
+</head>
+
+<body>
+  <a id="top"></a>
+
+  <!-- キーボード操作の人向け：Tabキーで最初に出る「本文へスキップ」 -->
+  <a class="skip" href="#main">本文へスキップ</a>
+
+
+  <!-- ==========================================================
+       ヘッダー（ロゴ・メニュー・文字サイズ）
+       ========================================================== -->
+  <header class="site-header">
+
+    <!-- ロゴ（押すとトップページへ） -->
+    <a href="index.html" class="brand">
+      <img src="img/logo.png" alt="" class="brand-logo">
+      <span class="brand-name">安陵図書館<small>ANRYO LIBRARY</small></span>
+    </a>
+
+    <nav class="gnav">
+      <a class="roll" href="shiryou.html"><span data-t="資料一覧">資料一覧</span></a>
+      <a class="btn" href="index.html">トップへ</a>
+    </nav>
+
+    <!-- 文字サイズ切替（動きは site.js） -->
+    <div class="tools">
+      <div class="fs" role="group" aria-label="文字サイズ">
+        <span class="fs-label" aria-hidden="true">文字</span>
+        <button type="button" class="fs-btn" data-fs="m" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="l" aria-pressed="false">大</button>
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- ==========================================================
+       ページのタイトル
+       ✏ パンくず（トップ ／ …）・タイトル・説明文
+       ========================================================== -->
+  <section class="page-head">
+    <div class="inner">
+      <p class="crumb"><a class="ul" href="index.html">トップ</a> ／ <a class="ul" href="shiryou.html">資料一覧</a> ／ 図書だよりアーカイブ</p>
+      <h1>【図書だよりアーカイブ】</h1>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       本文
+       ========================================================== -->
+  <main class="page-main" id="main" tabindex="-1">
+
+    <!-- 図書だより（Googleスプレッドシートの埋め込み）
+         中身はスプレッドシート側で更新すれば自動で変わります。 -->
+    <div class="frame">
+      <iframe
+        title="図書だよりアーカイブ"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ3vLb_Gxy4giBzJUhZUfQyGMxDI4UAphLeOccNfq8r3hkPXCQ0MtR3FBp4yMu2rpLgFfYVsvzS9u9/pubhtml?widget=true&amp;headers=false"></iframe>
+    </div>
+  </main>
+
+
+  <!-- ==========================================================
+       フッター
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="kasuri-band" aria-hidden="true"></div>
+    <p>© 2026 Anryo Library</p>
+  </footer>
+
+  <!-- 右下：トップに戻るボタン -->
+  <a href="#top" class="back-to-top" aria-label="トップに戻る">▲</a>
+
+  <script src="site.js"></script>
+</body>
+
+</html>

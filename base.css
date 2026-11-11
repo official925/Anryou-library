@@ -1,0 +1,529 @@
+/* ============================================================
+   安陵図書館  共通スタイル（base.css）
+   全ページで読み込んでいます。
+   ------------------------------------------------------------
+   もくじ
+     1. 色・フォント・柄の設定        ← 色を変えたいときはここだけ
+     2. 基本（ページ全体）
+     3. 絣（かすり）柄・見出しの飾り
+     4. ホバーの動き（部品）
+     5. ヘッダー
+     6. 見出し・補足文字
+     7. ポップアップ
+     8. フッター
+     9. トップに戻るボタン
+    10. サブページ共通
+    11. ユニバーサルデザイン（スキップ・フォーカス・文字サイズ）
+    12. スマホ用メニュー
+    13. レスポンシブ（画面幅ごとの調整）
+    14. 動きを減らす設定の人向け
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. 色・フォント・柄の設定
+   ここの値を変えると、サイト全体の色がまとめて変わります。
+   ------------------------------------------------------------ */
+:root {
+  /* 背景 */
+  --sumi:   #2b2622;   /* 泥染めの黒（いちばん下の背景） */
+  --sumi-2: #342e29;   /* 少し明るい黒（交互の帯・ボタンの地） */
+  --sumi-3: #3d3630;
+
+  /* 文字 */
+  --thread: #faf5ec;   /* 絹糸の白（見出し・強調） */
+  --text:   #ede6da;   /* 本文 */
+  --muted:  #c4baac;   /* 補足・注意書き */
+
+  /* 線 */
+  --line:   rgba(250, 245, 236, .2);    /* 細い区切り線 */
+  --line-2: rgba(250, 245, 236, .38);   /* 少し濃い線（枠など） */
+
+  /* 差し色 */
+  --tea:    #dcb07c;   /* テーチ木（車輪梅）の茶：ホバー・印 */
+  --doro:   #5c4332;   /* 泥田の茶：「本日」「今月」の背景 */
+
+  /* 横幅・フォント・動きのなめらかさ */
+  --max: 1120px;
+  --serif: "Shippori Mincho B1", "Yu Mincho", "Hiragino Mincho ProN", serif;   /* 明朝（見出し） */
+  --sans:  "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;            /* ゴシック（本文） */
+  --ease: cubic-bezier(.65, .05, .2, 1);
+
+  /* 絣柄（龍郷柄をイメージした菱と十字）。色を変えるときは %23 の後ろの6桁を変更 */
+  --kasuri:     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16 1L31 16 16 31 1 16Z' fill='none' stroke='%23ece4d6' stroke-width='1.1' stroke-dasharray='2.6 2.2'/%3E%3Crect x='15' y='12' width='2' height='8' fill='%23ece4d6'/%3E%3Crect x='12' y='15' width='8' height='2' fill='%23ece4d6'/%3E%3C/svg%3E");
+  --kasuri-tea: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16 1L31 16 16 31 1 16Z' fill='none' stroke='%23dcb07c' stroke-width='1.1' stroke-dasharray='2.6 2.2'/%3E%3Crect x='15' y='12' width='2' height='8' fill='%23dcb07c'/%3E%3Crect x='12' y='15' width='8' height='2' fill='%23dcb07c'/%3E%3C/svg%3E");
+}
+
+
+/* ------------------------------------------------------------
+   2. 基本（ページ全体）
+   ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;   /* ページ内リンクで飛んだとき、ヘッダーに隠れないように */
+  font-size: 100%;
+}
+html.fs-l { font-size: 118.75%; }   /* 文字サイズ「大」を押したとき */
+
+body {
+  font-family: var(--sans);
+  font-size: 1.0312rem;
+  color: var(--text);
+  line-height: 2;
+  letter-spacing: .04em;
+  background: var(--sumi);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+::selection { background: var(--tea); color: var(--sumi); }
+
+
+/* ------------------------------------------------------------
+   3. 絣（かすり）柄・見出しの飾り
+   ------------------------------------------------------------ */
+.kasuri, .kasuri-band { background-image: var(--kasuri); background-size: 32px 32px; }
+.kasuri-band { height: 32px; opacity: .22; }   /* フッター上の柄の帯 */
+
+/* 見出しの下の「糸のかすれ」 */
+.thread {
+  display: block;
+  width: 96px;
+  height: 5px;
+  margin-top: 14px;
+  background:
+    repeating-linear-gradient(90deg, var(--tea) 0 9px, transparent 9px 12px, var(--tea) 12px 14px, transparent 14px 19px) top / 100% 1px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 4px, var(--thread) 4px 7px, transparent 7px 13px) bottom / 100% 1px no-repeat;
+  opacity: .9;
+}
+
+
+/* ------------------------------------------------------------
+   4. ホバーの動き（部品）
+   ------------------------------------------------------------ */
+
+/* .roll … 文字が上に抜けて、下から茶色の文字が入ってくる（ヘッダーのメニュー） */
+.roll { display: inline-block; overflow: hidden; vertical-align: top; line-height: 1.6; }
+.roll span { position: relative; display: inline-block; transition: transform .5s var(--ease); }
+.roll span::after {
+  content: attr(data-t);
+  position: absolute;
+  left: 0; top: 100%;
+  color: var(--tea);
+}
+.roll:hover span, .roll:focus-visible span { transform: translateY(-100%); }
+
+/* .ul … 下線が左から引かれ、離すと右へ抜ける */
+.ul {
+  background: linear-gradient(currentColor, currentColor) right bottom / 0 1px no-repeat;
+  transition: background-size .5s var(--ease), color .3s;
+  padding-bottom: 1px;
+}
+.ul:hover { background-position: left bottom; background-size: 100% 1px; color: var(--thread); }
+
+/* .arw … 線の矢印（ホバーで伸びる） */
+.arw {
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  transition: width .5s var(--ease);
+}
+.arw::after {
+  content: "";
+  position: absolute;
+  right: 1px; top: -3px;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+a:hover .arw { width: 44px; }
+
+/* .btn … 枠線ボタン（ホバーで下から白く染まる） */
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 9px 20px;
+  border: 1px solid var(--line-2);
+  color: var(--thread);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: .1em;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color .45s var(--ease), border-color .45s;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--thread);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform .45s var(--ease);
+}
+.btn:hover { color: var(--sumi); border-color: var(--thread); }
+.btn:hover::before { transform: scaleY(1); }
+
+
+/* ------------------------------------------------------------
+   5. ヘッダー
+   ------------------------------------------------------------ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px clamp(16px, 4vw, 44px);
+  background: rgba(43, 38, 34, .88);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ロゴ */
+.logo-h1 { font-size: inherit; font-weight: inherit; line-height: 1; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--thread); }
+.brand-logo { width: 46px; height: 46px; filter: invert(.92) sepia(.15); transition: transform .9s var(--ease); }
+.brand:hover .brand-logo { transform: rotate(90deg); }
+.brand-name {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.brand-name small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.6562rem;
+  font-weight: 400;
+  letter-spacing: .14em;
+  color: var(--muted);
+}
+
+/* メニュー */
+.gnav { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 30px); font-size: 0.875rem; color: var(--text); }
+.mokuroku { display: flex; }
+
+/* サブページのヘッダー（メニューが少ないので常に横並び） */
+.site-header .gnav:not(#gnav) { margin-left: auto; }
+
+
+/* ------------------------------------------------------------
+   6. 見出し・補足文字
+   ------------------------------------------------------------ */
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: .1em;
+  color: var(--thread);
+  margin-bottom: 12px;
+}
+.muted { color: var(--muted); font-size: 0.875rem; }
+
+
+/* ------------------------------------------------------------
+   7. ポップアップ（開いたときに数秒出て消えるお知らせ）
+   ------------------------------------------------------------ */
+.popup {
+  position: fixed;
+  left: 50%;
+  top: 96px;
+  transform: translateX(-50%);
+  z-index: 1500;
+  width: min(90vw, 440px);
+  padding: 14px 22px;
+  background: var(--thread);
+  color: var(--sumi);
+  text-align: center;
+  animation: fadeOut 4s forwards;   /* 4秒で消える */
+  pointer-events: none;
+}
+.popup p { font-size: 0.9375rem; line-height: 1.7; }
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+
+/* ------------------------------------------------------------
+   8. フッター
+   ------------------------------------------------------------ */
+.site-footer {
+  background: #221e1b;
+  color: var(--muted);
+  text-align: center;
+  padding: 0 20px 44px;
+  font-size: 0.8125rem;
+  line-height: 2.1;
+  border-top: 1px solid var(--line);
+}
+.site-footer .kasuri-band { margin: 0 -20px 36px; }
+.site-footer .f-title { font-family: var(--serif); color: var(--text); letter-spacing: .12em; }
+.site-footer a:hover { color: var(--thread); }
+
+
+/* ------------------------------------------------------------
+   9. トップに戻るボタン（右下）
+   ------------------------------------------------------------ */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1200;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--sumi-2);
+  border: 1px solid var(--line-2);
+  color: var(--thread);
+  font-size: 0.8125rem;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color .4s var(--ease), border-color .4s;
+}
+.back-to-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--tea);
+  transform: translateY(100%);
+  transition: transform .45s var(--ease);
+}
+.back-to-top:hover { color: var(--sumi); border-color: var(--tea); }
+.back-to-top:hover::before { transform: none; }
+
+
+/* ------------------------------------------------------------
+   10. サブページ共通（資料一覧・目録・図書だより・coming soon）
+   ------------------------------------------------------------ */
+
+/* ページ上部のタイトル部分 */
+.page-head {
+  position: relative;
+  padding: 130px clamp(18px, 4vw, 44px) 44px;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.page-head::before {   /* 右側にうすく絣柄 */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--kasuri);
+  background-size: 32px 32px;
+  opacity: .1;
+  -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 20%, #000 100%);
+}
+.page-head .inner { position: relative; max-width: var(--max); margin: 0 auto; }
+.page-head h1, .page-head h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.625rem, 3.6vw, 2.25rem);
+  letter-spacing: .14em;
+  line-height: 1.5;
+  color: var(--thread);
+}
+.page-head p { margin-top: 10px; color: var(--muted); font-size: 0.875rem; }
+
+/* パンくず（トップ ／ 資料一覧） */
+.crumb { font-size: 0.8125rem; color: var(--muted); margin-bottom: 14px !important; margin-top: 0 !important; }
+.crumb a { color: var(--text); }
+
+/* 本文の枠 */
+.page-main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 48px clamp(18px, 4vw, 44px) 100px;
+}
+
+/* スプレッドシートなどの埋め込み枠 */
+.frame {
+  border: 1px solid var(--line-2);
+  overflow: hidden;
+  background: #fff;
+}
+.frame iframe { display: block; width: 100%; height: 72vh; min-height: 460px; border: 0; }
+
+
+/* ------------------------------------------------------------
+   11. ユニバーサルデザイン
+   ------------------------------------------------------------ */
+
+/* 本文へスキップ（Tabキーを押すと左上に出る） */
+.skip {
+  position: fixed;
+  left: 12px; top: -60px;
+  z-index: 3000;
+  padding: 10px 18px;
+  background: var(--thread);
+  color: var(--sumi);
+  font-weight: 700;
+  transition: top .2s;
+}
+.skip:focus { top: 12px; }
+
+/* キーボードで選んでいる場所をはっきり見せる */
+:focus-visible { outline: 3px solid var(--tea); outline-offset: 3px; }
+main:focus { outline: none; }
+
+/* 画面には出さず、読み上げソフトだけが読む */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 文字サイズ切替ボタン（標準 / 大） */
+.tools { display: flex; align-items: center; gap: 10px; }
+.fs { display: flex; align-items: center; gap: 4px; }
+.fs-label { font-size: 0.75rem; color: var(--muted); margin-right: 4px; }
+.fs-btn {
+  min-width: 44px;
+  min-height: 36px;
+  padding: 0 8px;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .3s, color .3s, border-color .3s;
+}
+.fs-btn[data-fs="l"] { font-size: 1rem; font-weight: 700; }
+.fs-btn:hover { border-color: var(--tea); }
+.fs-btn[aria-pressed="true"] { background: var(--thread); color: var(--sumi); border-color: var(--thread); }
+
+
+/* ------------------------------------------------------------
+   12. スマホ用メニュー（ボタン本体。開いたときの見た目は 13 の中）
+   ------------------------------------------------------------ */
+.menu-btn {
+  display: none;   /* PCでは隠す */
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  color: var(--thread);
+  font: inherit;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+/* 二本線 → ×（開いたとき） */
+.menu-btn .bars { position: relative; width: 18px; height: 10px; }
+.menu-btn .bars i {
+  position: absolute; left: 0;
+  width: 100%; height: 1.5px;
+  background: currentColor;
+  transition: transform .4s var(--ease), top .4s var(--ease);
+}
+.menu-btn .bars i:first-child { top: 0; }
+.menu-btn .bars i:last-child  { top: 8.5px; }
+.menu-open .menu-btn .bars i:first-child { top: 4.25px; transform: rotate(45deg); }
+.menu-open .menu-btn .bars i:last-child  { top: 4.25px; transform: rotate(-45deg); }
+
+
+/* ------------------------------------------------------------
+   13. レスポンシブ（画面幅ごとの調整）
+   ------------------------------------------------------------ */
+
+/* タブレット・スマホ（幅1020px以下）：メニューを全画面の開閉式に */
+@media (max-width: 1020px) {
+  .menu-btn { display: inline-flex; }
+
+  .menu-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--sumi); }
+  .menu-open body { overflow: hidden; }
+
+  .site-header .gnav#gnav {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    padding: 90px 28px 40px;
+    background: var(--sumi) var(--kasuri) right bottom / 32px 32px;
+    background-blend-mode: soft-light;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s var(--ease), visibility .4s;
+  }
+  .site-header .gnav#gnav::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(43,38,34,.97) 40%, rgba(43,38,34,.86));
+    z-index: -1;
+  }
+  .menu-open .site-header .gnav#gnav { opacity: 1; visibility: visible; }
+
+  /* メニューの各項目（スマホでは文字の入れ替わりはなし） */
+  .site-header .gnav#gnav .roll {
+    display: block;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--thread);
+  }
+  .site-header .gnav#gnav .roll span { transform: none !important; }
+  .site-header .gnav#gnav .roll span::after { display: none; }
+  .site-header .gnav#gnav .roll:hover { color: var(--tea); padding-left: 10px; transition: padding .4s var(--ease), color .3s; }
+
+  .site-header .gnav#gnav .mokuroku { margin-top: 26px; }
+  .site-header .gnav#gnav .btn { width: 100%; text-align: center; padding: 14px; font-size: 1rem; }
+}
+
+/* 幅880px以下：ロゴを少し小さく */
+@media (max-width: 880px) {
+  .brand-logo { width: 40px; height: 40px; }
+  .brand-name { font-size: 1.0625rem; }
+}
+
+/* スマホ（幅520px以下） */
+@media (max-width: 520px) {
+  .site-header { padding-left: 12px; padding-right: 12px; gap: 8px; }
+  .brand { gap: 8px; }
+  .brand-logo { width: 34px; height: 34px; }
+  .brand-name { font-size: 1rem; letter-spacing: .08em; }
+  .brand-name small { display: none; }
+
+  .tools { gap: 6px; }
+  .fs-label { display: none; }
+  .fs-btn { min-width: 40px; min-height: 40px; padding: 0 6px; }
+
+  .menu-btn { min-height: 40px; padding: 0 10px; }
+  /* 「メニュー」の文字は画面に出さず、読み上げだけ */
+  .menu-btn .menu-txt { font-size: 0.75rem; position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  .site-header .gnav:not(#gnav) .roll { display: none; }
+  .site-header .gnav:not(#gnav) .btn { padding: 8px 12px; }
+}
+
+
+/* ------------------------------------------------------------
+   14. 端末で「視差効果を減らす」設定の人向け
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
